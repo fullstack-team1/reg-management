@@ -4,13 +4,8 @@ from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
 from rest_framework.authentication import TokenAuthentication
 from django.utils.timezone import now
-from .models import Student, Course, Unit, Attendance
-from .serializers import (
-    StudentRegisterSerializer,
-    LoginSerializer,
-    UnitSerializer,
-    AttendanceSerializer
-)
+from .models import Unit, Attendance
+from .serializers import (StudentRegisterSerializer, LoginSerializer, UnitSerializer, AttendanceSerializer)
 from django.contrib.auth import login, logout
 from datetime import datetime
 
