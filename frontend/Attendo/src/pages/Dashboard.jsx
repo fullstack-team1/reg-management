@@ -25,6 +25,19 @@ export default function Dash() {
         navigate('/login');
     };
 
+    // Handle the attendance
+    const handleAttendance = async (unitId) => {
+        const res = await fetch("/api/attendance", {
+            method: 'POST',
+            body: JSON.stringify({unit_id : unitId}),
+            headers: {'content-type' : 'application/json'}
+        });
+
+        if (res.ok) {
+            alert("Attendance marked");
+        };
+    };
+
     return (
     <>
         <div>
