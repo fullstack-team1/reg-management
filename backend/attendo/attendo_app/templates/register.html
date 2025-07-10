@@ -4,7 +4,22 @@
 <h2 class="text-2xl font-bold mb-4">Sign up</h2>
 <form method="post" class="space-y-4">
     {% csrf_token %}
-    {{ form.as_p }}
+    <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required/>
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required/>
+    </div>
+    <div>
+        <label for="password1">Password</label>
+        <input type="password" name="password1" id="password1" required/>
+    </div>
+    <div>
+        <label for="password2">Confirm Password</label>
+        <input type="password" name="password2" id="password2" required/>
+    </div>
     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Sign up</button>
 </form>
 <p class="mt-4">Already signed up? <a href="{% url 'login' %}" class="text-blue-600">Sign in here</a>.</p>
