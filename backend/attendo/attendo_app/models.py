@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager,PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils import timezone
 
 
@@ -23,36 +23,30 @@ class StudentManager(BaseUserManager):
 
         return self.create_user(student_id, password, **extra_fields)
 
-class Course(models.Model):
+
+class Course(models.Model):  # <--- Only one definition!
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
 
 
-class Student(AbstractBaseUser,PermissionsMixin):
+class Student(AbstractBaseUser, PermissionsMixin):
     full_name = models.CharField(max_length=100)
     student_id = models.CharField(max_length=20, unique=True)
-    # course = models.ForeignKey("Course", on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'student_id'
-    REQUIRED_FIELDS = ['full_name']#, 'course']
+    REQUIRED_FIELDS = ['full_name', 'course']
 
     objects = StudentManager()
 
     def __str__(self):
         return f"{self.full_name} ({self.student_id})"
-
-
-class Course(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
 
 
 class Unit(models.Model):
