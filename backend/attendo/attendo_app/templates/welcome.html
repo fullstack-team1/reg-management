@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to Attendance API{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-4">Attendance API Dashboard</h1>
+<p class="mb-6 text-gray-700">Use the links below to test the app:</p>
+
+<ul class="space-y-2">
+  <li><a href="{% url 'register' %}" class="text-blue-600 hover:underline">Sign up</a></li>
+  <li><a href="{% url 'login' %}" class="text-blue-600 hover:underline">Sign in</a></li>
+  <li><a href="{% url 'dashboard' %}" class="text-blue-600 hover:underline">Dashboard</a></li>
+  <li><a href="{% url 'markattendance' %}" class="text-blue-600 hover:underline">Mark Attendance</a></li>
+  <li><a href="{% url 'history' %}" class="text-blue-600 hover:underline">View History</a></li>
+</ul>
+{% endblock %}

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'attendo_app',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

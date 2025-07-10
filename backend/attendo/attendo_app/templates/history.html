@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Attendance History{% endblock %}
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Attendance History</h2>
+
+<table class="w-full table-auto bg-white shadow-md rounded">
+    <thead>
+        <tr>
+            <th class="border px-4 py-2">Unit</th>
+            <th class="border px-4 py-2">Course</th>
+            <th class="border px-4 py-2">Date</th>
+            <th class="border px-4 py-2">Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in attendance %}
+            <tr>
+                <td class="border px-4 py-2">{{ record.unit.name }}</td>
+                <td class="border px-4 py-2">{{ record.unit.course.name }}</td>
+                <td class="border px-4 py-2">{{ record.timestamp.date }}</td>
+                <td class="border px-4 py-2">{{ record.timestamp.time }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4" class="text-center py-4">No attendance records found.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'dashboard' %}" class="text-blue-600 underline mt-4 inline-block">Back to Dashboard</a>
+{% endblock %}
