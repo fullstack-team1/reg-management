@@ -20,6 +20,11 @@ export default function Dash() {
         fetchData();
     }, []);
 
+    // Log out function 
+    const handleLogout = () => {
+        navigate('/login');
+    };
+
     return (
     <>
         <div>
